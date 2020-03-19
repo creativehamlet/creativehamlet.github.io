@@ -23,6 +23,7 @@ import Argon from "./plugins/argon-kit";
 
 Vue.config.productionTip = false;
 Vue.use(Argon);
+
 new Vue({
   store,
   router,

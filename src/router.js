@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import DefaultLayout from './layout/DefaultLayout.vue';
+import NoLayout from './layout/NoLayout.vue';
 import store from './store';
 
 Vue.use(Router);
@@ -11,9 +11,9 @@ const router=  new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () => import(/* webpackChunkName: "default" */ './views/Home.vue'),
-      meta: { layout: DefaultLayout },
+      name: 'landing',
+      component: () => import(/* webpackChunkName: "default" */ './views/Landing.vue'),
+      meta: { layout: NoLayout },
     },
   ],
 });
