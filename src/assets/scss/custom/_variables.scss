@@ -12,17 +12,17 @@ $enable-print-styles:       true !default;
 
 // Color system
 
-$white:    #fff !default;
-$gray-100: #f6f9fc !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #cdd2e2 !default;
-$gray-500: #adb5bd !default;
-$gray-600: #8898aa !default;   // Line footer color
-$gray-700: #4a526d !default;   // Line p color
-$gray-800: #32325d !default;   // Line heading color
-$gray-900: #05164f !default;
-$black:    #000 !default;
+$white:    #f5f5f5 !default;
+$gray-100: #e0e0e0 !default;
+$gray-200: #d0d0d0 !default;
+$gray-300: #808080 !default;
+$gray-400: #707070 !default;
+$gray-500: #606060 !default;
+$gray-600: #505050 !default;   // Line footer color
+$gray-700: #404040 !default;   // Line p color
+$gray-800: #303030 !default;   // Line heading color
+$gray-900: #202020 !default;
+$black:    #101010 !default;
 
 $grays: () !default;
 $grays: map-merge((
@@ -37,29 +37,19 @@ $grays: map-merge((
   "900": $gray-900
 ), $grays);
 
-$blue:    #0b67b7 !default;
-$indigo:  #cdd2e2 !default;
-$purple:  #8965e0 !default;
-$pink:    #f3a4b5 !default;
-$red:     #f5365c !default;
-$orange:  #fb6340 !default;
-$yellow:  #ffd600 !default;
-$green:   #aecc53 !default;
-$teal:    #82cadb!default;
-$cyan:    #90b9de !default;
+$blue:    #1f3c8c !default;
+$red:     #d9131d !default;
+$orange:  #f2620f !default;
+$yellow:  #fad932 !default;
+$green:   #04d939 !default;
 
 $colors: () !default;
 $colors: map-merge((
   "blue":       $blue,
-  "indigo":     $indigo,
-  "purple":     $purple,
-  "pink":       $pink,
   "red":        $red,
   "orange":     $orange,
   "yellow":     $yellow,
   "green":      $green,
-  "teal":       $teal,
-  "cyan":       $cyan,
   "white":      $white,
   "gray":       $gray-600,
   "light":      $gray-400,
@@ -67,11 +57,11 @@ $colors: map-merge((
   "gray-dark":  $gray-800
 ), $colors);
 
-$default:       $blue !default;
-$primary:       $indigo !default;
+$default:       $red !default;
+$primary:       $blue !default;
 $secondary:     $gray-900!default;
 $success:       $green !default;
-$info:          $teal !default;
+$info:          $gray-600 !default;
 $warning:       $orange !default;
 $danger:        $red !default;
 $light:         $gray-500 !default;
@@ -128,12 +118,12 @@ $shape-colors: map-merge((
 
 $shapes-primary-colors: () !default;
 $shapes-primary-colors: map-merge((
-  "step-1-gradient-bg":         $indigo,
+  "step-1-gradient-bg":         $red,
   "step-2-gradient-bg":         $blue,
   "step-3-gradient-bg":         $green,
-  "span-1-bg":                  $indigo,
+  "span-1-bg":                  $red,
   "span-2-bg":                  $blue,
-  "span-3-bg":                  $indigo,
+  "span-3-bg":                  $red,
   "span-4-bg":                  $green,
   "span-5-bg":                  $blue
 ), $shapes-primary-colors);
@@ -171,7 +161,7 @@ $shapes-dark-colors: map-merge((
   "span-2-bg":                  $gray-700,
   "span-3-bg":                  $gray-700,
   "span-4-bg":                  $gray-400,
-  "span-5-bg":                  $indigo,
+  "span-5-bg":                  $red,
 ), $shapes-dark-colors);
 
 
@@ -197,7 +187,7 @@ $love-color: $red !default;
 
 // Body
 
-$body-bg: $indigo !default;
+$body-bg: $white !default;
 $body-color: $gray-700 !default;
 
 
@@ -339,7 +329,7 @@ $headings-margin-bottom:      ($spacer / 2);
 $headings-font-family:        inherit !default;
 $headings-font-weight:        $font-weight-normal !default;
 $headings-line-height:        1.3 !default;
-$headings-color:              $indigo !default;
+$headings-color:              $primary !default;
 
 $heading-letter-spacing:      .025em !default;
 $heading-font-size:           .95rem !default;
