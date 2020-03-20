@@ -4,10 +4,11 @@
     
 }
 .footer {
-    background: $footer-bg;
+    background: $red;
     padding: 3rem 0;
     position: relative;
     height: 300px;
+    margin-top: 70px;
     //color: $footer-color;
     .col-footer {
         .heading {
@@ -63,13 +64,13 @@
 
 .footer-middle-line {
     @extend %skew-line;
-    background: $cyan;
-    transform: skewY(-7deg);
-    margin-top: -231px;
+    background: $blue;
+    transform: skewY(-5deg);
+    margin-top: -180px;
 }
 .footer-base-line {
     @extend %skew-line;
-    background: $footer-bg;
+    background: $red;
     transform: skewY(-5deg);
     margin-top: -165px;
 }

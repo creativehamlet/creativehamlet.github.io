@@ -20,9 +20,13 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import Argon from "./plugins/argon-kit";
+import VueParticles from 'vue-particles';
+import { CollapsePlugin } from 'bootstrap-vue';
 
 Vue.config.productionTip = false;
 Vue.use(Argon);
+Vue.use(VueParticles);
+Vue.use(CollapsePlugin);
 
 new Vue({
   store,

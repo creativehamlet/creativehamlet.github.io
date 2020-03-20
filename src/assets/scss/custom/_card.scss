@@ -1,17 +1,32 @@
 .card {
     position: relative;
+    .card-body {
+        background-color: white;
+    }
 }
 
 .profile-page {
     .card-profile {
-
+        z-index: 1;
         .card-profile-image {
             position: relative;
 
             img {
+                &.bounce {
+                    @extend .shadow;
+                    max-width: 220px;
+                    transform: translate(-50%,-30%);
+                    position: absolute;
+                    left: 50%;
+                    top: 80px;
+                    transition: $transition-base;
+                    border: 1px solid $orange;
+                    &:hover {
+                        transform: translate(-50%, -33%);
+                    }
+                }
                 max-width: 280px;
                 position: absolute;
-                transition: $transition-base;
             }
         }
 
