@@ -1,7 +1,6 @@
 export default {
-    'commercial': ['drive-shack', 'lidl', 'sanford-secu', 'tin-roof'],
-    'educational': ['noble-middle', 'sampson-community-college', 'wb-wicker', 'wrightsville-elementary'],
-    'medical': ['franklin-medical', 'unc-radiology'],
-    'multi-family': ['aspens-senior-living', 'woodlake-apartments'],
-    'municipality': ['iredell-jail'],
+    'design system': ['list-item-one', 'list-item-two', 'list-item-three'],
+    'rapid prototype': ['list-item-one', 'list-item-two', 'list-item-three'],
+    'marketing': ['list-item-one', 'list-item-two', 'list-item-three'],
+    'design': ['list-item-one', 'list-item-two', 'list-item-three']
 };

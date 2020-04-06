@@ -38,9 +38,6 @@
 
     // Large negative margins in pixels
 
-    .mt--100 {
-        margin-top: -100px !important;
-    }
     .mr--100 {
         margin-right: -100px !important;
     }
@@ -58,12 +55,6 @@
     }
     .mt--200 {
         margin-top: -200px !important;
-    }
-    .mb--200 {
-        margin-bottom: -200px !important;
-    }
-    .mt--300 {
-        margin-top: -300px !important;
     }
     .mb--300 {
         margin-bottom: -300px !important;
@@ -102,4 +93,16 @@
     .pb-300 {
         padding-bottom: 300px!important;
     }
+}
+
+.mt--100 {
+    margin-top: -100px !important;
+}
+
+.mb--200 {
+    margin-bottom: -200px !important;
+}
+
+.mt--300 {
+    margin-top: -300px !important;
 }

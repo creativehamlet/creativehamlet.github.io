@@ -28,7 +28,7 @@
         <div class="row">
           <tabs>
             <card shadow class="card-profile">
-              <tab-pane class="d-flex flex-column">
+              <tab-pane>
                 <div slot="title">Personal</div>
                 <div class="row">
                   <div class="col col-lg-3">
@@ -51,12 +51,10 @@
                       </div>
                     </div>
                     <b-collapse id="collapse-1-inner" class="mt-2">
-                      <div class="row d-flex">
+                      <div class="row mb-5">
                         <div class="col">
                           <h6 class="mt-4 text-uppercase">family life</h6>
-                          <p
-                            class="text-left"
-                          >An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
+                          <p class="text-left">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
                         </div>
                         <div class="col">
                           <div class="card-profile-image">
@@ -67,7 +65,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="row d-flex">
+                      <div class="row mb-5">
                         <div class="col">
                           <h6 class="mt-4 text-uppercase">hobbies</h6>
                           <p
@@ -88,21 +86,18 @@
                 </div>
               </tab-pane>
 
-              <tab-pane class="d-flex flex-column mt--200">
+              <tab-pane>
                 <div slot="title">Work</div>
-                <div class="row d-flex">
-                  <div class="col ml-5 border-left">
-                    <h3>History</h3>
-                    <div class="h6 mt-4">Digital Creative Solutions Expert</div>
-                    
-
+                <div class="row">
+                  <div class="col">
+                    <carousel-tabs :tabs="tabsObj"></carousel-tabs>
                   </div>
                 </div>
               </tab-pane>
 
-              <tab-pane class="d-flex flex-column mt--100">
+              <tab-pane>
                 <div slot="title">Relationship</div>
-                <div class="row d-flex">
+                <div class="row">
                   <div class="col ml-5 border-left">
                     <h3>History</h3>
                     <div class="h6 mt-4">Digital Creative Solutions Expert</div>
@@ -127,18 +122,22 @@
 import Tabs from "@/components/Tabs/Tabs.vue";
 import TabPane from "@/components/Tabs/TabPane.vue";
 import BListGroup from "bootstrap-vue";
-import BListGroupItem from "bootstrap-vue"
+import BListGroupItem from "bootstrap-vue";
+import CarouselTabs from "@/components/Carousel/CarouselTabs.vue";
+   import tabsObj from '@/data/carouselTabs.js';
 export default {
   name: "landing",
-  data: function() {
-      
-    return {};
+  data() {
+    return {
+      tabsObj: tabsObj,
+    };
   },
   components: {
     Tabs,
     TabPane,
     BListGroup,
-    BListGroupItem
+    BListGroupItem,
+    CarouselTabs
   }
 };
 </script>
