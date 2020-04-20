@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-4 text-center">
                     <router-link slot="brand" class="navbar-brand" to="/">
-                      <h3 class="">Bradley Sosnowski</h3>
+                      <img src="/img/brand/logo.png" alt="logo">
                     </router-link>
                 </div>
                 <div class="col-md-4">

@@ -5,8 +5,8 @@ const Minio = require('minio')
 const slideStore = {
     state: {
         slides: [],
-        project: 'ine',
-        category: 'design-systems',
+        project: '1-ine',
+        category: 'all',
         isLoading: true,
     },
     mutations: {
