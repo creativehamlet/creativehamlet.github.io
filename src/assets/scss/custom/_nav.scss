@@ -1,5 +1,14 @@
-.profile-page {
+.tab-content {
+    .tab-pane {
+        min-width: 1250px;
+        &#personal, &#relationship {
+            min-height: inherit;
+            background-color: #fff;
+        }
+    }
+}
 
+.profile-page {
     .nav-wrapper {
         position: relative;
         z-index: 9999;

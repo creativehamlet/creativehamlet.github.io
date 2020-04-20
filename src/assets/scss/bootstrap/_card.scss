@@ -8,11 +8,16 @@
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: $card-bg;
   background-clip: border-box;
   border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
 
+  &:not(.special) {
+    background-color: $card-bg;
+  }
+  &.special, &.special .card-body {
+    background-color: rgba(19, 34, 64, .5);
+  }
   > hr {
     margin-right: 0;
     margin-left: 0;

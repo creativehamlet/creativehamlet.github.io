@@ -11,42 +11,34 @@
     white-space: nowrap;
     transform: rotate(-90deg);
     cursor: pointer;
-    color: #4a526d;
-    &:not(.solid){
-        border: 1px solid $red;
-    }
+    color: $gray-100;
+    background-color: lighten($orange, 10%);
     &:hover {
+        background-color: $orange;
         transform: rotate(-90deg);
-        color: #05164f;
-    }
-    &.solid {
-        background-color: lighten(#cdd2e2, 10%);
-        &:hover {
-            background-color: #cdd2e2;
-        }
+        color: #fff;
     }
 }
 
 .btn{
     &.active {
-        color: $primary;
-    }
-    &.solid.active {
-        background-color: darken(#cdd2e2, 10%);
+        color: #fff;
+        background-color: rgba(19, 34, 64, 1);
     }
 }
 
-.left-nav-grid  {
-    display: grid;
-    grid-template-columns: 1fr 2fr 8fr repeat(2, 0fr);
-    grid-template-rows: 1fr repeat(4, 0fr);
-}
+.gallery-grid  {
+    @include media-breakpoint-up(md){
+        display: grid;
+        grid-template-columns: 40px 285px auto;
+        justify-content: space-evenly;
+    }
 
-.categories {
-    display: flex;
-    flex-direction: vertical;
-    justify-content: space-evenly;
-    left: 2rem;
+    .left-nav-container {
+        @include media-breakpoint-up(md){
+            display: inline-grid !important;
+        }
+    }
 }
 
 .list-group-item {
@@ -60,41 +52,42 @@
     border-top-right-radius: 0;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+    &:last-of-type {
+        display: none;
+    }
 }
 
 .gallery-nav {
-    min-height: 585px;
-    background-color: white;
-    min-width: 200px;
+    height: 695px;
     text-align: left;
+    overflow: auto;
+    @include media-breakpoint-up(md){
+        display: block !important;
+    }
 }
 
 .gallery-nav-item{
-        padding: 1em 1.5em;
-        list-style: none;
-        width: 100%;
-        cursor: pointer;
-        margin-bottom: 1px;
-        color: $primary;
-        box-shadow: 0 1px 0 #05164f;
-    &.solid {
-        background-color: white;
+    padding: 1em 1.5em;
+    list-style: none;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 1px;
+    color: $orange;
+    &:hover, &.active {
+        background-color: rgba(19, 34, 64, .5);
+        color: lighten($orange, 10%);
     }
-}
-
-.gallery-nav-item {
-    &.solid.active {
-        background-color: #cdd2e2;
-    }
-    color: $primary;
 }
 
 .gallery-wrapper {
     position: relative;
+    @include media-breakpoint-up(md){
+        min-width: 925px;
+    }
 }
 
 .gallery-wrapper, .gallery-nav {
-    min-height: 585px;
+    min-height: 695px;
 }
 
 .btn.list-group-item {
@@ -103,8 +96,86 @@
     text-align: left;
 }
 
-@media all and  (max-width: 800px) {
+@include media-breakpoint-down(md) {
     .gallery-wrapper, .list-group-wrapper {
         min-height: 100%;
     }
 }
+
+.outer-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .slide-wrapper {
+    width: 100%
+  
+  }
+  
+  /* Buttons. */
+  .button-wrapper {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+  }
+  
+  .direction-button {
+    background-color: transparent;
+    border: 0;
+    padding: 20.80rem 12.87rem;
+    color: white;
+  }
+  
+  .direction-button::before {
+    position: absolute;
+    top: 40%;
+    font-size: 3em;
+    font-family: FontAwesome;
+    display: inline-block;
+    padding-right: 6px;
+  }
+  
+  .prev::before {
+    left: 1rem;
+    content: "\f104";
+  }
+  
+  .next::before {
+    right: 1rem;
+    content: "\f105";
+  }
+  
+  .fullscreen-button {
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+    cursor: pointer;
+  }
+  
+  /* These classes control the 'dots' that show which slide the user is on. */
+  .indicator-wrapper {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1rem;
+    text-align: center;
+  }
+  .indicator {
+    display:inline-block;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  /* Simple fade transition. */
+  .fade-enter-active,
+  .fade-leave-active { transition: opacity .7s; }
+  .fade-enter,
+  .fade-leave-to { opacity: 5; }

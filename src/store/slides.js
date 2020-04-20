@@ -1,14 +1,21 @@
 import logError from '../logging';
 const AWS = require('aws-sdk');
+const Minio = require('minio')
 
 const slideStore = {
     state: {
         slides: [],
-        project: 'iredell-jail',
-        category: 'municipality',
+        project: 'ine',
+        category: 'design-systems',
         isLoading: true,
     },
     mutations: {
+        addSlide (state, val) {
+            if(!state.slides) {
+                Vue.set(state, 'slides', []);
+            }
+            state.slides.push(val);
+        },
         setSlides (state, val) {
             state.slides = val;
         },
@@ -26,25 +33,24 @@ const slideStore = {
         setIsLoading(context, loading) {
             context.commit('setIsLoading', loading);
         },
+        
         async fetchSlides({ commit, dispatch }) {
-            const s3 = new AWS.S3({
-                accessKeyId: process.env.VUE_APP_S3_ACCESS_KEY,
-                secretAccessKey: process.env.VUE_APP_S3_SECRET_KEY,
-                region: 'us-east-2'
+            const minioClient = new Minio.Client({
+
+                endPoint: process.env.VUE_APP_MINIO_ENDPOINT,
+                port: parseInt(process.env.VUE_APP_MINIO_PORT),
+                useSSL: false,
+                accessKey: process.env.VUE_APP_MINIO_ACCESS_KEY,
+                secretKey: process.env.VUE_APP_MINIO_SECRET_KEY
             });
-            const params = {
-                Bucket:process.env.VUE_APP_S3_BUCKET,
-            };
-            let response;
-            await s3.listObjectsV2(params, async function (err, data) {
-                if (err) {
-                    await logError(err);
-                }
-                else {
-                    commit('setSlides', data.Contents);
-                    dispatch('purgeEmptySlides');
-                }
+            const bucket = process.env.VUE_APP_MINIO_BUCKET;
+            let stream = minioClient.listObjectsV2(bucket, '', true)
+            stream.on('data', async function (obj) { 
+                let url = await minioClient.presignedGetObject(bucket, obj.name)
+                obj.url = url;
+                commit('addSlide', obj); 
             });
+
         },
         setProject(context, project) {
             context.commit('setProject', project);
@@ -63,14 +69,14 @@ const slideStore = {
             state.slides.forEach(element => {
 
                 // Split the Key (path) and get the object type
-                const split = element.Key.split('/');
-                const extension = element.Key.split('.')[1];
+                const split = element.name.split('/');
+                const extension = element.name.split('.')[1];
                 const type = (extension === 'png' || extension === 'jpg') ? 'img' : 'video';
 
                 // Push the element to the array if it's the correct project, and not empty (folder)
-                if(split.indexOf(state.project) > -1 && element.Size !== 0) {
+                if(split.indexOf(state.project) > -1 && element.size !== 0) {
                     slides.push({
-                        url: process.env.VUE_APP_S3_BASE_URL + element.Key,
+                        url: element.url,
                         type: type,
                     });
                 }

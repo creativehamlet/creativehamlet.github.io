@@ -111,6 +111,10 @@
 .tab-content {
   .tab-pane {
     display: none;
+    &.solid {
+      background-color: white;
+      min-height: inherit;
+    }
   }
   .tab-pane.active {
     display: block;

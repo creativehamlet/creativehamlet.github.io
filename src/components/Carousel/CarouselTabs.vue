@@ -1,15 +1,18 @@
 <template>
-<div class="left-nav-grid">
-    <btn-group vertical class="categories">
+<div class="gallery-grid">
+    <btn-group vertical class="left-nav-container d-none">
         <div v-for="(cat, index) in tabs" class="btn vertical-btn my-auto"
             :key="index" @click="changeCategory(index)" :class="[category===index?'active':'']">
             {{ index }}
         </div>
     </btn-group>
-    <ul class="gallery-nav px-0 mb-0">
+    <ul class="gallery-nav d-none px-0 mb-0">
         <li v-for="(pro, index) in tabs[category]" class="gallery-nav-item text-capitalize"
             @click="setProject(tabs[category][index])" :key="tabs[category][index]" :class="[project===tabs[category][index]?'active':'']">
-            {{ tabs[category][index].split('-').join(' ') }}
+            {{ tabs[category][index].replace(/\d+/g, '').split('-').join(' ') }}
+        </li>
+        <li v-if="category!=='all'" class="gallery-nav-item text-capitalize" key="all" @click="viewAll">
+            Back to All
         </li>
     </ul>
     <div class="gallery-wrapper">
@@ -32,6 +35,10 @@ export default {
         changeCategory(category) {
             this.setCategory(category);
             this.setProject(this.tabs[category][0]);
+        },
+        viewAll() {
+            this.setCategory('all');
+            this.setProject('all');
         },
     },
     computed: {

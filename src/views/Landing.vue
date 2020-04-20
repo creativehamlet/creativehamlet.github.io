@@ -4,7 +4,6 @@
       <div class="shape shape-secondary shape-skew">
         <vue-particles
           color="#bf571b"
-          :id="id"
           :particleOpacity="0.7"
           :particlesNumber="30"
           shapeType="circle"
@@ -27,8 +26,8 @@
       <div class="container container-lg">
         <div class="row">
           <tabs>
-            <card shadow class="card-profile">
-              <tab-pane>
+            <card shadow class="card-profile special">
+              <tab-pane id="personal">
                 <div slot="title">Personal</div>
                 <div class="row">
                   <div class="col col-lg-3">
@@ -38,7 +37,7 @@
                       />
                     </div>
                   </div>
-                  <div class="col ml-5 border-left">
+                  <div class="col ml-5 my-5 border-left">
                     <h3>Bradley Sosnowski</h3>
                     <div class="h6 font-weight-300">Raleigh, NC</div>
                     <h5 class="mt-4 text-uppercase">problem solver</h5>
@@ -86,7 +85,7 @@
                 </div>
               </tab-pane>
 
-              <tab-pane>
+              <tab-pane id="work">
                 <div slot="title">Work</div>
                 <div class="row">
                   <div class="col">
@@ -95,19 +94,15 @@
                 </div>
               </tab-pane>
 
-              <tab-pane>
+              <tab-pane id="relationship">
                 <div slot="title">Relationship</div>
                 <div class="row">
-                  <div class="col ml-5 border-left">
+                  <div class="col ml-5 my-5 border-right">
                     <h3>History</h3>
                     <div class="h6 mt-4">Digital Creative Solutions Expert</div>
                   </div>
                   <div class="col">
-                    <div class="card-profile-image">
-                      <img
-                        v-lazy="'https://project-portf.s3.us-east-2.amazonaws.com/assets/brad.jpg'"
-                      />
-                    </div>
+                    <img v-lazy="'https://project-portf.s3.us-east-2.amazonaws.com/assets/brad.jpg'"/>
                   </div>
                 </div>
               </tab-pane>
@@ -129,7 +124,7 @@ export default {
   name: "landing",
   data() {
     return {
-      tabsObj: tabsObj,
+      tabsObj: tabsObj
     };
   },
   components: {
