@@ -4,13 +4,15 @@
   <div class="slide-wrapper">
     <!-- Slide -->
     <transition tag="div" class="slide-transition" :name="fadeTransition" mode="out-in" appear>
-      <component class="slide-component w-100" @load="setIsLoading(false)" :class=" {'mw-100' : isVideo} " :controls="isVideo" @loadeddata="setIsLoading(false)"
-        :is="slides[currentSlide].type" :autoplay="autoplay" :muted="autoplay" :loop="loopVideo"
-        :src="slides[currentSlide].url" >
-      </component>
+      <span v-touch:swipe.left="prev" v-touch:swipe.right="next">
+        <component class="slide-component w-100 img-responsive" :class=" {'mw-100' : isVideo}"
+          controls="false" :is="slides[currentSlide].type" autoplay="false" muted="true"
+          :loop="loopVideo" :src="slides[currentSlide].url" poster="../../assets/svg/loader.svg" >
+        </component>
+      </span>
     </transition>
   </div>
-  <div v-if="!isLoading" class="button-wrapper test" key="buttons">
+  <div class="button-wrapper" key="buttons">
     <div @click="prev">
       <slot name="prev"><button class="direction-button prev"></button></slot>
     </div>
@@ -19,19 +21,20 @@
     </div>
   </div>
 
-  <div v-if="!isLoading">
-    <!-- Indicator dots -->
-    <ul v-if="indicators && category!=='all'" class="indicator-wrapper">
-      <li v-for="(indicator, index) in slides.length" class="indicator mt-2"
-        :style="dotColor(index)" :key="index" @click="currentSlide=index">
-      </li>
-    </ul>
-  </div>
+  <!-- Indicator dots -->
+  <ul v-show="showIndicators" class="indicator-wrapper">
+    <li v-for="(indicator, index) in slides.length" class="indicator mt-2"
+      :style="dotColor(index)" :key="index" @click="currentSlide=index">
+    </li>
+  </ul>
+
 </div>
 </template>
 
 <script>
 import {mapGetters, mapActions } from 'vuex';
+import $ from 'jquery';
+
 export default {
   name: 'carousel',
   data() {
@@ -41,9 +44,8 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['setIsLoading']),
+    swipeHandler(direction) {},
     next() {
-      this.setIsLoading(true);
       // Check whether to loop through or stop at the end when 'Next' button is clicked.
       if (this.currentSlide === (this.slides.length - 1) && this.loop) {
         this.currentSlide = 0;
@@ -52,7 +54,6 @@ export default {
       }
     },
     prev() {
-      this.setIsLoading(true);
       // Check whether to loop through or stop at the beginning when 'Prev' button is clicked.
       if (this.currentSlide === 0 && this.loop) {
         this.currentSlide = this.slides.length - 1;
@@ -71,13 +72,16 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['isLoading','category' ]),
+    ...mapGetters(['category' ]),
     fadeTransition() {
       return this.fade ? 'fade' : '';
     },
     isVideo() {
       return this.slides[this.currentSlide].type === 'video';
     },
+    showIndicators() {
+      return this.indicators && this.category!=='all';
+    }
   },
   created() {
     this.currentSlide = this.startAtSlide;
@@ -111,10 +115,6 @@ export default {
       type: String,
       default: '#0b67b7',
     },
-    autoplay: {
-      default: true,
-      type: Boolean,
-    },
     fade: {
       default: true,
       type: Boolean,
@@ -123,4 +123,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  /* Video loader icon */
+  video, img {
+      max-width: 80vw;
+      min-height:100%;
+      background: black url('../../assets/svg/loader.svg') center center no-repeat;
+      background-image: black cover;
+      object-fit: fill;
+      transition: 1s all;
+  }
+</style>

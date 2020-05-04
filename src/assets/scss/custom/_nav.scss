@@ -1,6 +1,8 @@
 .tab-content {
     .tab-pane {
-        min-width: 1250px;
+        @include media-breakpoint-up(lg) {
+            min-width: 1250px;
+        }
         &#personal, &#relationship {
             min-height: inherit;
             background-color: #fff;

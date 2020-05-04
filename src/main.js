@@ -21,12 +21,14 @@ import router from "./router";
 import store from "./store";
 import Argon from "./plugins/argon-kit";
 import VueParticles from 'vue-particles';
-import { CollapsePlugin } from 'bootstrap-vue';
+import Vue2TouchEvents from 'vue2-touch-events';
+import BootstrapVue from 'bootstrap-vue'
 
 Vue.config.productionTip = false;
 Vue.use(Argon);
 Vue.use(VueParticles);
-Vue.use(CollapsePlugin);
+Vue.use(Vue2TouchEvents);
+Vue.use(BootstrapVue);
 
 new Vue({
   store,

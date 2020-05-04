@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-4 text-center">
                     <router-link slot="brand" class="navbar-brand" to="/">
-                      <img src="/img/brand/logo.png" alt="logo">
+                      <img src="/img/brand/dark-logo.png" alt="logo">
                     </router-link>
                 </div>
                 <div class="col-md-4">

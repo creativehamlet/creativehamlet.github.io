@@ -1,7 +1,28 @@
 export default {
-    'design systems': ['1-ine', '2-abrigo'],
-    'rapid prototype': ['1-sageworks'],
-    'marketing': ['1-pixelscut', '2-daniels-and-roberts'],
-    'design': ['2-sageworks'],
-    'all': ['1-ine', '2-abrigo','1-sageworks','1-pixelscut', '2-daniels-and-roberts', '2-sageworks']
+    'design systems': [
+        {
+            name: '2-abrigo'
+        },
+        {
+            name: '1-ine'
+        }
+    ],
+    'rapid prototype': [
+        {
+            name: '1-sageworks'
+        }
+    ],
+    'marketing': [
+        {
+            name: '1-pixelscut'
+        },
+        {
+            name: '2-daniels-and-roberts'
+        }
+    ],
+    'design': [
+        {
+            name: '2-sageworks'
+        }
+    ],
 };
