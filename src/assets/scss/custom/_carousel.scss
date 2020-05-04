@@ -45,6 +45,7 @@ img {
         @media only screen and (min-width: 1340px) {
             display: inline-flex !important;
             margin-left: -75px;
+            min-height: 760px;
             & .btn {
                 width: 188px;
             }

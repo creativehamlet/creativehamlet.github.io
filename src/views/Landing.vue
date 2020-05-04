@@ -40,9 +40,9 @@
                     <div class="h6 font-weight-300 pl-3">Raleigh, NC</div>
                     <h5 class="mt-4 pl-3 text-uppercase">problem solver</h5>
                     <p class="text-left pl-3 py-2">I am a DESIGN thinker. I embrace the wonder, I relish the opportunity to delve deep, dive back and find the unseen solution. This is applied to my way of living when at work, home or play.</p><p class="pl-3 py-2">I have had the pleasure of working with some amazing teams transforming experiences for thousands of users plus creating a sustainable process of design/development for application scalability. Where design meets usability is where I live; building bridges between functional and the implausible.</p>
-                    <div class="row justify-content-end">
+                    <div class="row justify-content-start">
                       <div class="col-3">
-                        <a v-b-toggle.collapse-1-inner class="btn button-outlined">toggle more</a>
+                        <a v-b-toggle.collapse-1-inner class="btn btn-danger btn-sm align-left text-white">toggle more</a>
                       </div>
                     </div>
                     <b-collapse id="collapse-1-inner" class="mt-2">
@@ -96,7 +96,7 @@
                     </div>
                   </div>
                   <div v-show="description" class="collapsible text-center">
-                    <h4 class="project-title text-dark">
+                    <h4 class="project-title">
                       <a v-b-toggle.collapse-1 :variant="[collapsed?'secondary':'primary']" @click="collapsed=!collapsed">
                         {{ projectTitle }}
                       </a>
@@ -195,6 +195,7 @@ export default {
     top: 20px;
     bottom: -3.5rem;
     z-index: 2; 
+    color: #fff;
     &:hover {
       text-decoration: underline;
       cursor: pointer;
@@ -202,6 +203,8 @@ export default {
   }
   .card.no-max {
     top: -30px;
+    color: white;
+    background-color: transparent;
     ul li {
       font-size: 1.25rem;
     }
