@@ -3,7 +3,7 @@
         @include media-breakpoint-up(lg) {
             min-width: 1250px;
         }
-        &#personal, &#relationship {
+        &#personal, &#relationship, &#news {
             min-height: inherit;
             background-color: #fff;
         }

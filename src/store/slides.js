@@ -5,9 +5,8 @@ const Minio = require('minio')
 const slideStore = {
     state: {
         slides: [],
-        project: '2-abrigo',
-        category: 'all',
-        isLoading: true,
+        project: 'ine',
+        category: 'design systems'
     },
     mutations: {
         addSlide (state, val) {
@@ -25,18 +24,10 @@ const slideStore = {
         setCategory (state, val) {
             state.category = val;
         },
-        setIsLoading (state, val) {
-            state.isLoading = val;
-        },
     },
     actions: {
-        setIsLoading(context, loading) {
-            context.commit('setIsLoading', loading);
-        },
-        
         async fetchSlides({ commit, dispatch }) {
             const minioClient = new Minio.Client({
-
                 endPoint: process.env.VUE_APP_MINIO_ENDPOINT,
                 port: parseInt(process.env.VUE_APP_MINIO_PORT),
                 useSSL: false,
@@ -85,7 +76,6 @@ const slideStore = {
         },
         category: state => state.category,
         project: state => state.project,
-        isLoading: state => state.isLoading,
     }
 }
 

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import AdvancedFooter from '../components/layout/AdvancedFooter';
+import AdvancedFooter from '../components/Layout/AdvancedFooter';
 
 export default {
   components: {

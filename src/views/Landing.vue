@@ -41,7 +41,7 @@
                     <h5 class="mt-4 pl-3 text-uppercase">problem solver</h5>
                     <p class="text-left pl-3 py-2">I am a DESIGN thinker. I embrace the wonder, I relish the opportunity to delve deep, dive back and find the unseen solution. This is applied to my way of living when at work, home or play.</p><p class="pl-3 py-2">I have had the pleasure of working with some amazing teams transforming experiences for thousands of users plus creating a sustainable process of design/development for application scalability. Where design meets usability is where I live; building bridges between functional and the implausible.</p>
                     <div class="row justify-content-start">
-                      <div class="col-3">
+                      <div class="col-3 ml-3">
                         <a v-b-toggle.collapse-1-inner class="btn btn-danger btn-sm align-left text-white">toggle more</a>
                       </div>
                     </div>
@@ -81,12 +81,12 @@
                   <div class="row">
                     <carousel-tabs :tabs="tabsObj"></carousel-tabs>
                     <div id="category-select" class="mt-3">
-                      <select class="col-12 col-md-6 text-uppercase" placeholder="Category..." @change="changeCategory($event.target.value)">
+                      <select class="col-12 col-md-6 text-capitalize" placeholder="Category..." @change="changeCategory($event.target.value)">
                         <option v-for="(cat, index) in Object.keys(tabsObj)" :value="cat" :key="`${cat}${index}`">
                             {{cat}}
                         </option>
                       </select>
-                      <select class="col-12 col-md-6 text-uppercase" placeholder="Project..." @change="setProject($event.target.value)">
+                      <select class="col-12 col-md-6 text-capitalize" placeholder="Project..." @change="setProject($event.target.value)">
                         <option v-for="(project, index) in Object.keys(tabsObj[category])"
                           :key="`${project}${index}`"
                           :value="tabsObj[category][index].name">
@@ -96,7 +96,7 @@
                     </div>
                   </div>
                   <div v-show="description" class="collapsible text-center">
-                    <h4 class="project-title">
+                    <h4 class="project-title font-weight-light">
                       <a v-b-toggle.collapse-1 :variant="[collapsed?'secondary':'primary']" @click="collapsed=!collapsed">
                         {{ projectTitle }}
                       </a>
@@ -127,6 +127,14 @@
                   </div>
                 </div>
               </tab-pane>
+              <tab-pane id="news">
+                <div slot="title">News</div>
+                <div class="row">
+                  <div class="col ml-5 my-5 p-4">
+                    <post></post>
+                  </div>
+                </div>
+              </tab-pane>
             </card>
           </tabs>
         </div>
@@ -138,6 +146,7 @@
   import Tabs from "@/components/Tabs/Tabs.vue";
   import TabPane from "@/components/Tabs/TabPane.vue";
   import CarouselTabs from "@/components/Carousel/CarouselTabs.vue";
+  import Post from "@/components/Blog/Post.vue";
   import tabsObj from '@/data/carouselTabs.js';
   import { mapGetters, mapActions } from 'vuex';
 export default {
@@ -181,7 +190,8 @@ export default {
   components: {
     CarouselTabs,
     TabPane,
-    Tabs
+    Tabs,
+    Post
   },
   created() {
     this.addAllToTabsObject();

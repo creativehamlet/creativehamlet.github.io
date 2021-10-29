@@ -21,11 +21,13 @@
             </div>
         </div>
     </div>
-    </footer>
+  </footer>
 </template>
 <script>
 export default {
   name: 'app-footer',
+  components: {
+  },
   data() {
     return {
       year: new Date().getFullYear()
@@ -33,5 +35,3 @@ export default {
   },
 };
 </script>
-<style>
-</style>
