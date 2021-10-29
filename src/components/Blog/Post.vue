@@ -48,15 +48,12 @@
           page: 1,
           page_size: 10
         }).then((res) => {
-          // console.log(res.data)
           this.posts = res.data.data
         })
       },
       getCategories() {
         butter.category.list()
           .then((res) => {
-            console.log('List of Categories:')
-            console.log(res.data.data)
           })
       },
       getPostsByCategory() {
@@ -64,8 +61,6 @@
             include: 'recent_posts'
           })
           .then((res) => {
-            console.log('Posts with specific category:')
-            console.log(res)
           })
       }
     },
